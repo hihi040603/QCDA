@@ -1,1 +1,155 @@
-123
+import java.util.*;
+
+// ====== Entity Classes ======
+class Student {
+    private String id;
+    private String name;
+    private String major;
+
+    public Student(String id, String name, String major) {
+        this.id = id;
+        this.name = name;
+        this.major = major;
+    }
+
+    public String getId() { return id; }
+    public String getName() { return name; }
+    public String getMajor() { return major; }
+
+    @Override
+    public String toString() {
+        return id + " - " + name + " (" + major + ")";
+    }
+}
+
+class Teacher {
+    private String id;
+    private String name;
+    private String department;
+
+    public Teacher(String id, String name, String department) {
+        this.id = id;
+        this.name = name;
+        this.department = department;
+    }
+
+    @Override
+    public String toString() {
+        return id + " - " + name + " (" + department + ")";
+    }
+}
+
+class Course {
+    private String id;
+    private String title;
+    private int credit;
+
+    public Course(String id, String title, int credit) {
+        this.id = id;
+        this.title = title;
+        this.credit = credit;
+    }
+
+    @Override
+    public String toString() {
+        return id + " - " + title + " (" + credit + " tín chỉ)";
+    }
+}
+
+// ====== Repository / Manager Classes ======
+class StudentRepository {
+    private List<Student> students = new ArrayList<>();
+
+    public void addStudent(Student s) {
+        students.add(s);
+    }
+
+    public List<Student> getAll() {
+        return students;
+    }
+}
+
+class TeacherRepository {
+    private List<Teacher> teachers = new ArrayList<>();
+
+    public void addTeacher(Teacher t) {
+        teachers.add(t);
+    }
+
+    public List<Teacher> getAll() {
+        return teachers;
+    }
+}
+
+class CourseRepository {
+    private List<Course> courses = new ArrayList<>();
+
+    public void addCourse(Course c) {
+        courses.add(c);
+    }
+
+    public List<Course> getAll() {
+        return courses;
+    }
+}
+
+// ====== Application Layer ======
+public class SchoolApp {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        StudentRepository studentRepo = new StudentRepository();
+        TeacherRepository teacherRepo = new TeacherRepository();
+        CourseRepository courseRepo = new CourseRepository();
+
+        int choice;
+        do {
+            System.out.println("==== MENU ====");
+            System.out.println("1. Thêm Sinh viên");
+            System.out.println("2. Xem danh sách Sinh viên");
+            System.out.println("3. Thêm Giáo viên");
+            System.out.println("4. Xem danh sách Giáo viên");
+            System.out.println("5. Thêm Môn học");
+            System.out.println("6. Xem danh sách Môn học");
+            System.out.println("0. Thoát");
+            System.out.print("Chọn: ");
+            choice = sc.nextInt();
+            sc.nextLine();
+
+            switch (choice) {
+                case 1:
+                    System.out.print("ID: "); String sid = sc.nextLine();
+                    System.out.print("Tên: "); String sname = sc.nextLine();
+                    System.out.print("Ngành: "); String smajor = sc.nextLine();
+                    studentRepo.addStudent(new Student(sid, sname, smajor));
+                    break;
+                case 2:
+                    for (Student s : studentRepo.getAll()) {
+                        System.out.println(s);
+                    }
+                    break;
+                case 3:
+                    System.out.print("ID: "); String tid = sc.nextLine();
+                    System.out.print("Tên: "); String tname = sc.nextLine();
+                    System.out.print("Khoa: "); String dept = sc.nextLine();
+                    teacherRepo.addTeacher(new Teacher(tid, tname, dept));
+                    break;
+                case 4:
+                    for (Teacher t : teacherRepo.getAll()) {
+                        System.out.println(t);
+                    }
+                    break;
+                case 5:
+                    System.out.print("ID: "); String cid = sc.nextLine();
+                    System.out.print("Tên môn: "); String cname = sc.nextLine();
+                    System.out.print("Số tín chỉ: "); int credit = sc.nextInt();
+                    courseRepo.addCourse(new Course(cid, cname, credit));
+                    break;
+                case 6:
+                    for (Course c : courseRepo.getAll()) {
+                        System.out.println(c);
+                    }
+                    break;
+            }
+        } while (choice != 0);
+    }
+}
