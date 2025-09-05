@@ -1,7 +1,7 @@
 // Chương trình quản lý trường học cực kỳ BAD CODE
 // Lưu ý: code này chỉ để sinh viên phân tích, KHÔNG nên dùng thật
 // Tất cả dữ liệu lưu trữ trong ArrayList<String> dạng "id|name|field1|field2|..."
-// AnnSamaa đã đi qua đây
+// AnnSamaa đã đi qua đây đag súa day may con lon
 import java.util.*;
 
 public class BadSchoolProgram {
@@ -16,17 +16,6 @@ public class BadSchoolProgram {
         ArrayList<String> grades = new ArrayList<String>();
 
         int menu = 0;
-        while (menu != 99) {
-            System.out.println("============= MENU CHINH =============");
-            System.out.println("1. Quan ly Sinh vien");
-            System.out.println("2. Quan ly Giao vien");
-            System.out.println("3. Quan ly Mon hoc");
-            System.out.println("4. Quan ly Dang ky hoc");
-            System.out.println("5. Quan ly Diem");
-            System.out.println("6. Bao cao tong hop");
-            System.out.println("99. Thoat");
-            System.out.print("Nhap lua chon: ");
-            menu = sc.nextInt(); sc.nextLine();
 
             if (menu == 1) {
                 // Quản lý sinh viên
