@@ -16,8 +16,7 @@ public class SchoolProgram
 {
     private static void AddStudent(List<Student> students)
     {
-        Console.Write("ID: "); string id = Console.ReadLine();
-        Console.Write("Tên: "); string name = Console.ReadLine();
+        Console.Write("ID: "); string id = Console.ReadLine(); Console.Write("Tên: "); string name = Console.ReadLine();
         Console.Write("Tuổi: "); int.TryParse(Console.ReadLine(), out int age);
         Console.Write("GPA: "); double.TryParse(Console.ReadLine(), out double gpa);
 
