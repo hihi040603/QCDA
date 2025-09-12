@@ -1,7 +1,7 @@
 // Chương trình quản lý trường học cực kỳ BAD CODE
 // Lưu ý: code này chỉ để sinh viên phân tích, KHÔNG nên dùng thật
 // Tất cả dữ liệu lưu trữ trong ArrayList<String> dạng "id|name|field1|field2|..."
-// hihi0406487787787778888888888888888888888999999
+// hihi040648778778777
 ////???????77777
 import java.util.*;
 
