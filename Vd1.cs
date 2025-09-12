@@ -1,56 +1,31 @@
-import java.util.*;
-
-// ====== Entity Classes ======
-class Student {
+class Course {
     private String id;
     private String name;
-    private String major;
+    private int credits;
 
-    public Student(String id, String name, String major) {
+    public Course(String id, String name, int credits) {
         this.id = id;
         this.name = name;
-        this.major = major;
+        this.credits = credits;
     }
 
     public String getId() { return id; }
     public String getName() { return name; }
-    public String getMajor() { return major; }
+    public int getCredits() { return credits; }
 
     @Override
     public String toString() {
-        return id + " - " + name + " (" + major + ")";
+        return id + " - " + name + " (" + credits + " tín chỉ)";
     }
 }
-class Teacher {
-    private String id;
-    private String name;
-    private String department;
+class CourseManager {
+    private List<Course> courses = new ArrayList<>();
 
-    public Teacher(String id, String name, String department) {
-        this.id = id;
-        this.name = name;
-        this.department = department;
+    public void addCourse(Course c) {
+        courses.add(c);
     }
 
-    @Override
-    public String toString() {
-        return id + " - " + name + " (" + department + ")";
-    }
-}
-
-class Course {
-    private String id;
-    private String title;
-    private int credit;
-
-    public Course(String id, String title, int credit) {
-        this.id = id;
-        this.title = title;
-        this.credit = credit;
-    }
-
-    @Override
-    public String toString() {
-        return id + " - " + title + " (" + credit + " tín chỉ)";
+    public void listCourses() {
+        courses.forEach(System.out::println);
     }
 }
