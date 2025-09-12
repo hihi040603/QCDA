@@ -39,7 +39,7 @@ class Student {
 class SchoolManager {
     private Scanner scanner = new Scanner(System.in);
     private List<Student> students = new ArrayList<>();
-
+    private ArrayList<String> teachers = new ArrayList<String>();
     public void manageStudents() {
         int choice = 0;
         while (choice != 9) {
@@ -185,8 +185,67 @@ class SchoolManager {
         System.out.println("Đã sắp xếp theo GPA.");
     }
 
-    // Các hàm quản lý khác (giáo viên, môn học, đăng ký học, điểm, báo cáo) 
-    public void manageTeachers() { System.out.println("Chức năng Quản lý Giáo viên chưa triển khai."); }
+    public void manageTeachers() {
+        int tmenu = 0;
+        while (tmenu != 9) {
+            System.out.println("--- QUAN LY GIAO VIEN ---");
+            System.out.println("1. Them GV");
+            System.out.println("2. Xoa GV");
+            System.out.println("3. Cap nhat GV");
+            System.out.println("4. Hien thi GV");
+            System.out.println("9. Quay lai");
+            tmenu = sc.nextInt(); 
+            sc.nextLine();
+        switch (tmenu) {
+            case 1: addTeachers(); break;
+            case 2: removeTeachers(); break;
+            case 3: updateTeachers(); break;
+            case 4: highTeachers(); break;
+            case 9: System.out.println("Quay lại menu chính."); break;
+            default: System.out.println("Lựa chọn không hợp lệ, vui lòng nhập lại."); break;
+        }
+    private void addTeachers() {
+        System.out.print("Nhap id GV: ");
+        String id = sc.nextLine();
+        System.out.print("Nhap ten GV: ");
+        String name = sc.nextLine();
+        System.out.print("Nhap chuyen mon: ");
+        String major = sc.nextLine();
+        teachers.add(id + "|" + name + "|" + major);
+    }
+
+    private void removeTeachers() {
+        System.out.print("Nhap id GV can xoa: ");
+        String id = sc.nextLine();
+        for (int i = 0; i < teachers.size(); i++) {
+            String[] p = teachers.get(i).split("\\|");
+            if (p[0].equals(id)) {
+                teachers.remove(i);
+                break;
+            }
+        }
+    }
+    private void updateTeachers() {
+        System.out.print("Nhap id GV cap nhat: ");
+        String id = sc.nextLine();
+        for (int i = 0; i < teachers.size(); i++) {
+            String[] p = teachers.get(i).split("\\|");
+            if (p[0].equals(id)) {
+                System.out.print("Nhap ten moi: ");
+                String name = sc.nextLine();
+                System.out.print("Nhap chuyen mon moi: ");
+                String major = sc.nextLine();
+                teachers.set(i, id + "|" + name + "|" + major);
+            }
+        }
+    }
+    private void highTeachers() {
+        for (int i = 0; i < teachers.size(); i++) {
+            String[] p = teachers.get(i).split("\\|");
+                System.out.println("ID:" + p[0] + " Name:" + p[1] + " Major:" + p[2]);
+        }
+    }
+    
     public void manageCourses() { System.out.println("Chức năng Quản lý Môn học chưa triển khai."); }
     public void manageEnrollments() { System.out.println("Chức năng Quản lý Đăng ký học chưa triển khai."); }
     public void manageGrades() { System.out.println("Chức năng Quản lý Điểm chưa triển khai."); }
