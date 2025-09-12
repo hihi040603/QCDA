@@ -1,6 +1,6 @@
 using System;
 using System.Collections.Generic;
-
+//clean code ver 1.0
 // ===== Entity Classes =====
 public class Student {
     public string Id { get; set; }
