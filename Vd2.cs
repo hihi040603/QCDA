@@ -1,10 +1,4 @@
-// BadSchoolProgram.cs
-// Chương trình quản lý trường học bằng C# cực kỳ BAD CODE
-// Gồm: Sinh viên, Giáo viên, Môn học, Đăng ký, Điểm
-// Tất cả lưu bằng List<string> kiểu "id|field1|field2|..."
-// hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh
-// hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh
-// kkkkkkkkkkkkkkkkkkkkkkkkkkkkkk
+
 using System;
 using System.Collections.Generic;
 
@@ -15,6 +9,7 @@ public class Student
     public int Age { get; set; }
     public double GPA { get; set; }
 }
+
 
 public class SchoolProgram
 {
