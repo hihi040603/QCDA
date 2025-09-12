@@ -1,31 +1,29 @@
-class Course {
-    private String id;
-    private String name;
-    private int credits;
+class Enrollment {
+    private Student student;
+    private Course course;
 
-    public Course(String id, String name, int credits) {
-        this.id = id;
-        this.name = name;
-        this.credits = credits;
+    public Enrollment(Student student, Course course) {
+        this.student = student;
+        this.course = course;
     }
 
-    public String getId() { return id; }
-    public String getName() { return name; }
-    public int getCredits() { return credits; }
+    public Student getStudent() { return student; }
+    public Course getCourse() { return course; }
 
     @Override
     public String toString() {
-        return id + " - " + name + " (" + credits + " tín chỉ)";
+        return student.getName() + " đăng ký " + course.getName();
     }
 }
-class CourseManager {
-    private List<Course> courses = new ArrayList<>();
 
-    public void addCourse(Course c) {
-        courses.add(c);
+class EnrollmentManager {
+    private List<Enrollment> enrollments = new ArrayList<>();
+
+    public void enroll(Student s, Course c) {
+        enrollments.add(new Enrollment(s, c));
     }
 
-    public void listCourses() {
-        courses.forEach(System.out::println);
+    public void listEnrollments() {
+        enrollments.forEach(System.out::println);
     }
 }
