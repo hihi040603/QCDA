@@ -1,5 +1,108 @@
 
 import java.util.*;
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class Grades{
+    private String StudentId;
+    private String CourseId;
+    private int Score;
+
+    public Grades (String StudentId, string CourseId, int Score){
+        this.StudentId=StudentId;
+        this.CourseId = CourseId;
+        this.Score = Score;
+    }
+
+    public String getStudentId() {
+        return studentId;
+    }
+
+    public void setStudentId(String studentId) {
+        this.studentId = studentId;
+    }
+
+    public String getCourseId() {
+        return courseId;
+    }
+
+    public void setCourseId(String courseId) {
+        this.courseId = courseId;
+    }
+
+    public double getScore() {
+        return score;
+    }
+
+    public void setScore(double score) {
+        this.score = score;
+    }
+
+    @Override
+    public String toString() {
+        return String.format("StudentID: %s | CourseID: %s | Score: %.2f",
+                studentId, courseId, score);
+    }
+}
+
+public class GradeManager {
+    private ArrayList<Grades> grades = new ArrayList<>();
+    private Scanner sc;
+
+    private void nhapDiem(Scanner sc) {
+        System.out.print("Nhap id SV: ");
+        String sid = sc.nextLine();
+        System.out.print("Nhap id MH: ");
+        String cid = sc.nextLine();
+        System.out.print("Nhap diem: ");
+        double d = sc.nextDouble();
+        sc.nextLine();
+
+        Grades g = new Grades(sid, cid, d);
+        grades.add(g);
+        System.out.println("✅ Da them: " + g);
+    }
+
+    private void capNhatDiem(Scanner sc) {
+        System.out.print("Nhap id SV: ");
+        String sid = sc.nextLine();
+        System.out.print("Nhap id MH: ");
+        String cid = sc.nextLine();
+
+        boolean found = false;
+        for (Grades g : grades) {
+            if (g.getStudentId().equals(sid) && g.getCourseId().equals(cid)) {
+                System.out.print("Nhap diem moi: ");
+                double d = sc.nextDouble();
+                sc.nextLine();
+                g.setScore(d);
+                System.out.println("✅ Da cap nhat: " + g);
+                found = true;
+                break;
+            }
+        }
+        if (!found) {
+            System.out.println("❌ Khong tim thay diem cua SV:" + sid + " MH:" + cid);
+        }
+    }
+
+    private void xoaDiem(Scanner sc) {
+        System.out.print("Nhap id SV: ");
+        String sid = sc.nextLine();
+        System.out.print("Nhap id MH: ");
+        String cid = sc.nextLine();
+
+        for (int i = 0; i < grades.size(); i++) {
+            Grades g = grades.get(i);
+            if (g.getStudentId().equals(sid) && g.getCourseId().equals(cid)) {
+                grades.remove(i);
+                System.out.println("✅ Da xoa diem: " + g);
+                return;
+            }
+        }
+        System.out.println("❌ Khong tim thay diem can xoa.");
+    }
+}
 
 class Student {
     private String id;
@@ -107,15 +210,6 @@ class SchoolManager {
             System.out.println("Không tìm thấy sinh viên.");
         }
     }
-
-    private void updateStudent() {
-        System.out.print("Nhập ID cần cập nhật: ");
-        String id = scanner.nextLine();
-        Student found = null;
-        for (Student s : students) {
-            if (s.getId().equals(id)) {
-                found = s;
-                break;
             }
         }
         if (found != null) {
@@ -288,5 +382,42 @@ public class CleanSchoolProgram {
         }
 
         scanner.close();
+    }
+    
+}
+class Enrollment {
+    private Student student;
+    private Course course;
+
+    public Enrollment(Student student, Course course) {
+        this.student = student;
+        this.course = course;
+    }
+
+    public Student getStudent() { return student; }
+    public Course getCourse() { return course; }
+
+    @Override
+    public String toString() {
+        return "Sinh viên " + student.getName() + " đăng ký môn " + course.getName();
+    }
+}
+
+class EnrollmentManager {
+    private List<Enrollment> enrollments = new ArrayList<>();
+
+    public void enroll(Student student, Course course) {
+        enrollments.add(new Enrollment(student, course));
+    }
+
+    public void listEnrollments() {
+        if (enrollments.isEmpty()) {
+            System.out.println("⚠ Chưa có đăng ký nào.");
+        } else {
+            System.out.println("\n📖 DANH SÁCH ĐĂNG KÝ:");
+            for (Enrollment e : enrollments) {
+                System.out.println(e);
+            }
+        }
     }
 }
