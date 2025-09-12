@@ -12,18 +12,25 @@ class Enrollment {
 
     @Override
     public String toString() {
-        return student.getName() + " đăng ký " + course.getName();
+        return "Sinh viên " + student.getName() + " đăng ký môn " + course.getName();
     }
 }
 
 class EnrollmentManager {
     private List<Enrollment> enrollments = new ArrayList<>();
 
-    public void enroll(Student s, Course c) {
-        enrollments.add(new Enrollment(s, c));
+    public void enroll(Student student, Course course) {
+        enrollments.add(new Enrollment(student, course));
     }
 
     public void listEnrollments() {
-        enrollments.forEach(System.out::println);
+        if (enrollments.isEmpty()) {
+            System.out.println("⚠ Chưa có đăng ký nào.");
+        } else {
+            System.out.println("\n📖 DANH SÁCH ĐĂNG KÝ:");
+            for (Enrollment e : enrollments) {
+                System.out.println(e);
+            }
+        }
     }
 }
