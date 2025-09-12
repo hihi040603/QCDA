@@ -162,11 +162,9 @@ public class SchoolProgram
     }
     public static void Main(string[] args)
     {
-        List<string> students = new List<string>();
-        List<string> teachers = new List<string>();
-        List<string> courses = new List<string>();
-        List<string> enrollments = new List<string>();
+        List<string> students = new List<string>();        List<string> teachers = new List<string>(); List<string> courses = new List<string>();List<string> enrollments = new List<string>();
         List<string> grades = new List<string>();
+
 
         int menu = 0;
         while (menu != 99)
@@ -291,7 +289,7 @@ public class SchoolProgram
                         default:
                             Console.WriteLine("Lua chon khong hop le. Vui long chon lai.");
                             break;
-                        }
+                    }
                     }
                 }
                     
