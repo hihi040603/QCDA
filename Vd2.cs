@@ -189,108 +189,109 @@ public class SchoolProgram
                     while (smenu != 9)
                     {
                         case 1:
-                            
+
                             break;
                         case 2:
                             Console.Write("Nhap id can xoa: ");
-                                string id = Console.ReadLine();
-                                for (int i = 0; i < students.Count; i++)
+                            string id = Console.ReadLine();
+                            for (int i = 0; i < students.Count; i++)
+                            {
+                                string[] parts = students[i].Split('|');
+                                if (parts[0] == id)
                                 {
-                                    string[] parts = students[i].Split('|');
-                                    if (parts[0] == id)
-                                    {
-                                        students.RemoveAt(i);
-                                        break;
-                                    }
+                                    students.RemoveAt(i);
+                                    break;
                                 }
+                            }
                             break;
                         case 3:
                             Console.Write("Nhap id can cap nhat: ");
-                                string id = Console.ReadLine();
-                                for (int i = 0; i < students.Count; i++)
+                            string id = Console.ReadLine();
+                            for (int i = 0; i < students.Count; i++)
+                            {
+                                string[] parts = students[i].Split('|');
+                                if (parts[0] == id)
                                 {
-                                    string[] parts = students[i].Split('|');
-                                    if (parts[0] == id)
-                                    {
-                                        Console.Write("Nhap ten moi: ");
-                                        string name = Console.ReadLine();
-                                        Console.Write("Nhap tuoi moi: ");
-                                        int age = int.Parse(Console.ReadLine());
-                                        Console.Write("Nhap GPA moi: ");
-                                        double gpa = double.Parse(Console.ReadLine());
-                                        students[i] = id + "|" + name + "|" + age + "|" + gpa;
-                                    }
+                                    Console.Write("Nhap ten moi: ");
+                                    string name = Console.ReadLine();
+                                    Console.Write("Nhap tuoi moi: ");
+                                    int age = int.Parse(Console.ReadLine());
+                                    Console.Write("Nhap GPA moi: ");
+                                    double gpa = double.Parse(Console.ReadLine());
+                                    students[i] = id + "|" + name + "|" + age + "|" + gpa;
                                 }
+                            }
                             break;
                         case 4:
                             foreach (var s in students)
-                                {
-                                    string[] p = s.Split('|');
-                                    Console.WriteLine("ID:" + p[0] + " Name:" + p[1] + " Age:" + p[2] + " GPA:" + p[3]);
-                                }
+                            {
+                                string[] p = s.Split('|');
+                                Console.WriteLine("ID:" + p[0] + " Name:" + p[1] + " Age:" + p[2] + " GPA:" + p[3]);
+                            }
                             break;
                         case 5:
                             Console.Write("Nhap ten: ");
-                                string name = Console.ReadLine();
-                                foreach (var s in students)
+                            string name = Console.ReadLine();
+                            foreach (var s in students)
+                            {
+                                string[] p = s.Split('|');
+                                if (p[1] == name)
                                 {
-                                    string[] p = s.Split('|');
-                                    if (p[1] == name)
-                                    {
-                                        Console.WriteLine("Tim thay: " + s);
-                                    }
+                                    Console.WriteLine("Tim thay: " + s);
                                 }
+                            }
                             break;
                         case 6:
                             foreach (var s in students)
+                            {
+                                string[] p = s.Split('|');
+                                if (double.Parse(p[3]) > 8.0)
                                 {
-                                    string[] p = s.Split('|');
-                                    if (double.Parse(p[3]) > 8.0)
-                                    {
-                                        Console.WriteLine("Sinh vien gioi: " + s);
-                                    }
+                                    Console.WriteLine("Sinh vien gioi: " + s);
                                 }
+                            }
                             break;
                         case 7:
                             for (int i = 0; i < students.Count; i++)
+                            {
+                                for (int j = 0; j < students.Count - 1; j++)
                                 {
-                                    for (int j = 0; j < students.Count - 1; j++)
+                                    string[] p1 = students[j].Split('|');
+                                    string[] p2 = students[j + 1].Split('|');
+                                    if (p1[1].CompareTo(p2[1]) > 0)
                                     {
-                                        string[] p1 = students[j].Split('|');
-                                        string[] p2 = students[j + 1].Split('|');
-                                        if (p1[1].CompareTo(p2[1]) > 0)
-                                        {
-                                            string tmp = students[j];
-                                            students[j] = students[j + 1];
-                                            students[j + 1] = tmp;
-                                        }
+                                        string tmp = students[j];
+                                        students[j] = students[j + 1];
+                                        students[j + 1] = tmp;
                                     }
                                 }
-                                Console.WriteLine("Da sap xep theo ten.");
+                            }
+                            Console.WriteLine("Da sap xep theo ten.");
                             break;
                         case 8:
                             for (int i = 0; i < students.Count; i++)
+                            {
+                                for (int j = 0; j < students.Count - 1; j++)
                                 {
-                                    for (int j = 0; j < students.Count - 1; j++)
+                                    string[] p1 = students[j].Split('|');
+                                    string[] p2 = students[j + 1].Split('|');
+                                    if (double.Parse(p1[3]) < double.Parse(p2[3]))
                                     {
-                                        string[] p1 = students[j].Split('|');
-                                        string[] p2 = students[j + 1].Split('|');
-                                        if (double.Parse(p1[3]) < double.Parse(p2[3]))
-                                        {
-                                            string tmp = students[j];
-                                            students[j] = students[j + 1];
-                                            students[j + 1] = tmp;
-                                        }
+                                        string tmp = students[j];
+                                        students[j] = students[j + 1];
+                                        students[j + 1] = tmp;
                                     }
                                 }
-                                Console.WriteLine("Da sap xep theo GPA.");
+                            }
+                            Console.WriteLine("Da sap xep theo GPA.");
                             break;
                         case 9:
-                            
+
                             break;
                         default:
                             Console.WriteLine("Lua chon khong hop le. Vui long chon lai.");
                             break;
+                        }
                     }
                 }
                     
