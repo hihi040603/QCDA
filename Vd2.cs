@@ -4,7 +4,6 @@
 // Tất cả lưu bằng List<string> kiểu "id|field1|field2|..."
 // hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh
 // hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh
-// kkkkkkkkkkkkkkkkkkkkkkkkkkkkkk
 using System;
 using System.Collections.Generic;
 
