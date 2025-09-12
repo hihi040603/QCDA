@@ -250,8 +250,7 @@ public class SchoolProgram
                             for (int i = 0; i < students.Count; i++)
                                 {
                                     for (int j = 0; j < students.Count - 1; j++)
-                                    {
-                                        string[] p1 = students[j].Split('|');
+                                    { string[] p1 = students[j].Split('|');
                                         string[] p2 = students[j + 1].Split('|');
                                         if (p1[1].CompareTo(p2[1]) > 0)
                                         {
